@@ -1,0 +1,13 @@
+[Desktop Entry]
+Version=1.0
+Name=DCT
+Comment= DCT P2P Cryptocurrency
+Comment[fr]= DCT, monnaie virtuelle cryptographique pair à pair
+Comment[tr]= DCT, eşten eşe kriptografik sanal para birimi
+Exec=idchaincoin-qt %u
+Terminal=false
+Type=Application
+Icon=idchaincoin128
+MimeType=x-scheme-handler/idchaincoin;
+Categories=Office;Finance;
+StartupWMClass=DCT-qt

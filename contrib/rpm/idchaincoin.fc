@@ -1,0 +1,8 @@
+/usr/bin/idchaincoin-cli		--	gen_context(system_u:object_r:idchaincoin_exec_t,s0)
+/usr/sbin/idchaincoind		--	gen_context(system_u:object_r:idchaincoin_exec_t,s0)
+/usr/lib(64)?/idchaincoin/idchaincoind		--	gen_context(system_u:object_r:idchaincoin_exec_t,s0)
+
+/etc/idchaincoin(/.*)?		gen_context(system_u:object_r:idchaincoin_conf_t,s0)
+/var/lib/idchaincoin(/.*)?		gen_context(system_u:object_r:idchaincoin_var_lib_t,s0)
+
+(/var)?/run/idchaincoind(/.*)?   gen_context(system_u:object_r:idchaincoin_var_run_t,s0)

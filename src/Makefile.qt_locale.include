@@ -1,0 +1,15 @@
+QT_TS = \
+  qt/locale/idchaincoin_de.ts \
+  qt/locale/idchaincoin_en.ts \
+  qt/locale/idchaincoin_en_US.ts \
+  qt/locale/idchaincoin_es.ts \
+  qt/locale/idchaincoin_es_ES.ts \
+  qt/locale/idchaincoin_fr_FR.ts \
+  qt/locale/idchaincoin_hr_HR.ts \
+  qt/locale/idchaincoin_it.ts \
+  qt/locale/idchaincoin_ko_KR.ts \
+  qt/locale/idchaincoin_nl.ts \
+  qt/locale/idchaincoin_pl.ts \
+  qt/locale/idchaincoin_ru.ts \
+  qt/locale/idchaincoin_tr.ts \
+  qt/locale/idchaincoin_zh_CN.ts

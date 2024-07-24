@@ -1,0 +1,81 @@
+policy_module(idchaincoin, 1.100.1)
+
+########################################
+#
+# Declarations
+#
+
+type idchaincoin_t;
+type idchaincoin_exec_t;
+init_daemon_domain(idchaincoin_t, idchaincoin_exec_t)
+
+permissive idchaincoin_t;
+
+type idchaincoin_initrc_exec_t;
+init_script_file(idchaincoin_initrc_exec_t)
+
+type idchaincoin_conf_t;
+files_type(idchaincoin_conf_t)
+
+type idchaincoin_var_lib_t;
+files_type(idchaincoin_var_lib_t)
+
+type idchaincoin_var_run_t;
+files_type(idchaincoin_var_run_t)
+
+type idchaincoin_port_t;
+corenet_port(idchaincoin_port_t)
+
+########################################
+#
+# idchaincoin local policy
+#
+allow idchaincoin_t self:process { fork };
+
+allow idchaincoin_t self:fifo_file rw_fifo_file_perms;
+allow idchaincoin_t self:unix_stream_socket create_stream_socket_perms;
+
+manage_dirs_pattern(idchaincoin_t, idchaincoin_conf_t, idchaincoin_conf_t)
+manage_files_pattern(idchaincoin_t, idchaincoin_conf_t, idchaincoin_conf_t)
+
+manage_dirs_pattern(idchaincoin_t, idchaincoin_var_lib_t, idchaincoin_var_lib_t)
+manage_files_pattern(idchaincoin_t, idchaincoin_var_lib_t, idchaincoin_var_lib_t)
+files_var_lib_filetrans(idchaincoin_t, idchaincoin_var_lib_t, { dir file })
+
+manage_dirs_pattern(idchaincoin_t, idchaincoin_var_run_t, idchaincoin_var_run_t)
+manage_files_pattern(idchaincoin_t, idchaincoin_var_run_t, idchaincoin_var_run_t)
+
+sysnet_dns_name_resolve(idchaincoin_t)
+corenet_all_recvfrom_unlabeled(idchaincoin_t)
+
+allow idchaincoin_t self:tcp_socket create_stream_socket_perms;
+corenet_tcp_sendrecv_generic_if(idchaincoin_t)
+corenet_tcp_sendrecv_generic_node(idchaincoin_t)
+corenet_tcp_sendrecv_all_ports(idchaincoin_t)
+corenet_tcp_bind_generic_node(idchaincoin_t)
+
+gen_require(`
+    type idchaincoin_port_t;
+')
+allow idchaincoin_t idchaincoin_port_t:tcp_socket name_bind;
+
+gen_require(`
+    type idchaincoin_port_t;
+')
+allow idchaincoin_t idchaincoin_port_t:tcp_socket name_connect;
+
+domain_use_interactive_fds(idchaincoin_t)
+
+files_read_etc_files(idchaincoin_t)
+
+miscfiles_read_localization(idchaincoin_t)
+
+sysnet_dns_name_resolve(idchaincoin_t)
+
+allow idchaincoin_t idchaincoin_exec_t:file execute_no_trans;
+allow idchaincoin_t self:process setsched;
+corecmd_exec_ls(idchaincoin_t)
+corenet_tcp_connect_http_port(idchaincoin_t)
+dev_read_urand(idchaincoin_t)
+fs_getattr_xattr_fs(idchaincoin_t)
+kernel_read_system_state(idchaincoin_t)

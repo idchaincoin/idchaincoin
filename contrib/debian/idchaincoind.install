@@ -1,0 +1,3 @@
+usr/local/bin/idchaincoind usr/bin
+usr/local/bin/idchaincoin-cli usr/bin
+debian/examples/idchaincoin.conf etc/idchaincoin

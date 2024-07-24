@@ -1,0 +1,696 @@
+# Copyright (c) 2013-2016 The Bitcoin Core developers
+# Distributed under the MIT software license, see the accompanying
+# file COPYING or http://www.opensource.org/licenses/mit-license.php.
+
+bin_PROGRAMS += qt/idchaincoin-qt
+EXTRA_LIBRARIES += qt/libbitcoinqt.a
+
+# idchaincoin qt core #
+include Makefile.qt_locale.include
+
+QT_FORMS_UI = \
+  qt/forms/addressbookpage.ui \
+  qt/forms/askpassphrasedialog.ui \
+  qt/forms/coincontroldialog.ui \
+  qt/forms/editaddressdialog.ui \
+  qt/forms/helpmessagedialog.ui \
+  qt/forms/intro.ui \
+  qt/forms/openuridialog.ui \
+  qt/forms/optionsdialog.ui \
+  qt/forms/rpcconsole.ui \
+  qt/idchaincoin/forms/loadingdialog.ui \
+  qt/idchaincoin/forms/snackbar.ui \
+  qt/idchaincoin/forms/navmenuwidget.ui \
+  qt/idchaincoin/forms/lockunlock.ui \
+  qt/idchaincoin/forms/expandablebutton.ui \
+  qt/idchaincoin/forms/receivedialog.ui \
+  qt/idchaincoin/forms/topbar.ui \
+  qt/idchaincoin/forms/txrow.ui \
+  qt/idchaincoin/forms/dashboardwidget.ui \
+  qt/idchaincoin/forms/addresslabelrow.ui \
+  qt/idchaincoin/forms/contactdropdownrow.ui \
+  qt/idchaincoin/forms/mninfodialog.ui \
+  qt/idchaincoin/forms/optionbutton.ui \
+  qt/idchaincoin/forms/masternodewizarddialog.ui \
+  qt/idchaincoin/forms/mnrow.ui \
+  qt/idchaincoin/forms/masternodeswidget.ui \
+  qt/idchaincoin/forms/myaddressrow.ui \
+  qt/idchaincoin/forms/sendchangeaddressdialog.ui \
+  qt/idchaincoin/forms/sendconfirmdialog.ui \
+  qt/idchaincoin/forms/sendcustomfeedialog.ui \
+  qt/idchaincoin/forms/sendchangeaddressdialog.ui \
+  qt/idchaincoin/forms/sendmultirow.ui \
+  qt/idchaincoin/forms/send.ui \
+  qt/idchaincoin/forms/addnewaddressdialog.ui \
+  qt/idchaincoin/forms/addnewcontactdialog.ui \
+  qt/idchaincoin/forms/requestdialog.ui \
+  qt/idchaincoin/forms/receivewidget.ui \
+  qt/idchaincoin/forms/tooltipmenu.ui \
+  qt/idchaincoin/forms/addresseswidget.ui \
+  qt/idchaincoin/forms/defaultdialog.ui \
+  qt/idchaincoin/settings/forms/settingsbackupwallet.ui \
+  qt/idchaincoin/settings/forms/settingsexportcsv.ui \
+  qt/idchaincoin/settings/forms/settingsbittoolwidget.ui \
+  qt/idchaincoin/settings/forms/settingsconsolewidget.ui \
+  qt/idchaincoin/settings/forms/settingsdisplayoptionswidget.ui \
+  qt/idchaincoin/settings/forms/settingsfaqwidget.ui \
+  qt/idchaincoin/settings/forms/settingsinformationwidget.ui \
+  qt/idchaincoin/settings/forms/settingsmainoptionswidget.ui \
+  qt/idchaincoin/settings/forms/settingsmultisenddialog.ui \
+  qt/idchaincoin/settings/forms/settingsmultisendwidget.ui \
+  qt/idchaincoin/settings/forms/settingssignmessagewidgets.ui \
+  qt/idchaincoin/settings/forms/settingswalletoptionswidget.ui \
+  qt/idchaincoin/settings/forms/settingswalletrepairwidget.ui \
+  qt/idchaincoin/settings/forms/settingswidget.ui \
+  qt/idchaincoin/forms/welcomecontentwidget.ui \
+  qt/idchaincoin/forms/splash.ui
+
+QT_MOC_CPP = \
+  qt/moc_addressbookpage.cpp \
+  qt/moc_addresstablemodel.cpp \
+  qt/moc_askpassphrasedialog.cpp \
+  qt/moc_bantablemodel.cpp \
+  qt/moc_bitcoinaddressvalidator.cpp \
+  qt/idchaincoin/moc_idchaincoingui.cpp \
+  qt/moc_bitcoinunits.cpp \
+  qt/moc_clientmodel.cpp \
+  qt/moc_coincontroldialog.cpp \
+  qt/moc_coincontroltreewidget.cpp \
+  qt/moc_csvmodelwriter.cpp \
+  qt/moc_editaddressdialog.cpp \
+  qt/moc_guiutil.cpp \
+  qt/moc_intro.cpp \
+  qt/moc_macdockiconhandler.cpp \
+  qt/moc_macnotificationhandler.cpp \
+  qt/moc_notificator.cpp \
+  qt/moc_openuridialog.cpp \
+  qt/moc_optionsdialog.cpp \
+  qt/moc_optionsmodel.cpp \
+  qt/moc_peertablemodel.cpp \
+  qt/moc_paymentserver.cpp \
+  qt/moc_qvalidatedlineedit.cpp \
+  qt/moc_qvaluecombobox.cpp \
+  qt/moc_recentrequeststablemodel.cpp \
+  qt/moc_rpcconsole.cpp \
+  qt/moc_trafficgraphwidget.cpp \
+  qt/moc_transactionfilterproxy.cpp \
+  qt/moc_transactiontablemodel.cpp \
+  qt/moc_utilitydialog.cpp \
+  qt/moc_walletmodel.cpp \
+  qt/idchaincoin/moc_loadingdialog.cpp \
+  qt/idchaincoin/moc_pwidget.cpp \
+  qt/idchaincoin/moc_focuseddialog.cpp \
+  qt/idchaincoin/moc_snackbar.cpp \
+  qt/idchaincoin/moc_navmenuwidget.cpp \
+  qt/idchaincoin/moc_lockunlock.cpp \
+  qt/idchaincoin/moc_expandablebutton.cpp \
+  qt/idchaincoin/moc_furabstractlistitemdelegate.cpp \
+  qt/idchaincoin/moc_receivedialog.cpp \
+  qt/idchaincoin/moc_pfborderimage.cpp \
+  qt/idchaincoin/moc_topbar.cpp \
+  qt/idchaincoin/moc_txrow.cpp \
+  qt/idchaincoin/moc_dashboardwidget.cpp \
+  qt/idchaincoin/moc_addresslabelrow.cpp \
+  qt/idchaincoin/moc_contactdropdownrow.cpp \
+  qt/idchaincoin/moc_mninfodialog.cpp \
+  qt/idchaincoin/moc_optionbutton.cpp \
+  qt/idchaincoin/moc_mnmodel.cpp \
+  qt/idchaincoin/moc_masternodewizarddialog.cpp \
+  qt/idchaincoin/moc_mnrow.cpp \
+  qt/idchaincoin/moc_masternodeswidget.cpp \
+  qt/idchaincoin/moc_myaddressrow.cpp \
+  qt/idchaincoin/moc_contactsdropdown.cpp \
+  qt/idchaincoin/moc_sendchangeaddressdialog.cpp \
+  qt/idchaincoin/moc_sendconfirmdialog.cpp \
+  qt/idchaincoin/moc_sendcustomfeedialog.cpp \
+  qt/idchaincoin/moc_sendchangeaddressdialog.cpp \
+  qt/idchaincoin/moc_sendmultirow.cpp \
+  qt/idchaincoin/moc_send.cpp \
+  qt/idchaincoin/moc_addnewaddressdialog.cpp \
+  qt/idchaincoin/moc_addnewcontactdialog.cpp \
+  qt/idchaincoin/moc_requestdialog.cpp \
+  qt/idchaincoin/moc_receivewidget.cpp \
+  qt/idchaincoin/moc_tooltipmenu.cpp \
+  qt/idchaincoin/moc_addresseswidget.cpp \
+  qt/idchaincoin/moc_defaultdialog.cpp \
+  qt/idchaincoin/settings/moc_settingsbackupwallet.cpp \
+  qt/idchaincoin/settings/moc_settingsexportcsv.cpp \
+  qt/idchaincoin/settings/moc_settingsbittoolwidget.cpp \
+  qt/idchaincoin/settings/moc_settingsconsolewidget.cpp \
+  qt/idchaincoin/settings/moc_settingsdisplayoptionswidget.cpp \
+  qt/idchaincoin/settings/moc_settingsfaqwidget.cpp \
+  qt/idchaincoin/settings/moc_settingsinformationwidget.cpp \
+  qt/idchaincoin/settings/moc_settingsmainoptionswidget.cpp \
+  qt/idchaincoin/settings/moc_settingsmultisenddialog.cpp \
+  qt/idchaincoin/settings/moc_settingsmultisendwidget.cpp \
+  qt/idchaincoin/settings/moc_settingssignmessagewidgets.cpp \
+  qt/idchaincoin/settings/moc_settingswalletoptionswidget.cpp \
+  qt/idchaincoin/settings/moc_settingswalletrepairwidget.cpp \
+  qt/idchaincoin/settings/moc_settingswidget.cpp \
+  qt/idchaincoin/moc_welcomecontentwidget.cpp \
+  qt/idchaincoin/moc_splash.cpp
+
+BITCOIN_MM = \
+  qt/macdockiconhandler.mm \
+  qt/macnotificationhandler.mm
+
+QT_MOC = \
+  qt/idchaincoin.moc \
+  qt/intro.moc \
+  qt/rpcconsole.moc \
+  qt/idchaincoin/settings/moc_settingsconsolewidget.cpp
+
+QT_QRC_CPP = qt/qrc_idchaincoin.cpp
+QT_QRC = qt/idchaincoin.qrc
+QT_QRC_LOCALE_CPP = qt/qrc_idchaincoin_locale.cpp
+QT_QRC_LOCALE = qt/idchaincoin_locale.qrc
+
+PROTOBUF_CC = qt/paymentrequest.pb.cc
+PROTOBUF_H = qt/paymentrequest.pb.h
+PROTOBUF_PROTO = qt/paymentrequest.proto
+
+BITCOIN_QT_H = \
+  qt/addressbookpage.h \
+  qt/addresstablemodel.h \
+  qt/askpassphrasedialog.h \
+  qt/bantablemodel.h \
+  qt/bitcoinaddressvalidator.h \
+  qt/idchaincoin/idchaincoingui.h \
+  qt/bitcoinunits.h \
+  qt/clientmodel.h \
+  qt/coincontroldialog.h \
+  qt/coincontroltreewidget.h \
+  qt/csvmodelwriter.h \
+  qt/editaddressdialog.h \
+  qt/guiconstants.h \
+  qt/guiutil.h \
+  qt/intro.h \
+  qt/macdockiconhandler.h \
+  qt/macnotificationhandler.h \
+  qt/networkstyle.h \
+  qt/notificator.h \
+  qt/openuridialog.h \
+  qt/optionsdialog.h \
+  qt/optionsmodel.h \
+  qt/paymentrequestplus.h \
+  qt/paymentserver.h \
+  qt/peertablemodel.h \
+  qt/platformstyle.h \
+  qt/qvalidatedlineedit.h \
+  qt/qvaluecombobox.h \
+  qt/recentrequeststablemodel.h \
+  qt/rpcconsole.h \
+  qt/trafficgraphwidget.h \
+  qt/transactionfilterproxy.h \
+  qt/transactionrecord.h \
+  qt/transactiontablemodel.h \
+  qt/utilitydialog.h \
+  qt/walletmodel.h \
+  qt/walletmodeltransaction.h \
+  qt/idchaincoin/prunnable.h \
+  qt/idchaincoin/pfborderimage.h \
+  qt/idchaincoin/loadingdialog.h \
+  qt/winshutdownmonitor.h \
+  qt/idchaincoin/pwidget.h \
+  qt/idchaincoin/focuseddialog.h \
+  qt/idchaincoin/guitransactionsutils.h \
+  qt/idchaincoin/snackbar.h \
+  qt/idchaincoin/navmenuwidget.h \
+  qt/idchaincoin/lockunlock.h \
+  qt/idchaincoin/receivedialog.h \
+  qt/idchaincoin/furlistrow.h \
+  qt/idchaincoin/furabstractlistitemdelegate.h \
+  qt/idchaincoin/txviewholder.h \
+  qt/idchaincoin/qtutils.h \
+  qt/idchaincoin/expandablebutton.h \
+  qt/idchaincoin/topbar.h \
+  qt/idchaincoin/txrow.h \
+  qt/idchaincoin/addressholder.h \
+  qt/idchaincoin/addressfilterproxymodel.h \
+  qt/idchaincoin/dashboardwidget.h \
+  qt/idchaincoin/addresslabelrow.h \
+  qt/idchaincoin/contactdropdownrow.h \
+  qt/idchaincoin/mninfodialog.h \
+  qt/idchaincoin/optionbutton.h \
+  qt/idchaincoin/mnmodel.h \
+  qt/idchaincoin/masternodewizarddialog.h \
+  qt/idchaincoin/mnrow.h \
+  qt/idchaincoin/masternodeswidget.h \
+  qt/idchaincoin/myaddressrow.h \
+  qt/idchaincoin/contactsdropdown.h \
+  qt/idchaincoin/sendchangeaddressdialog.h \
+  qt/idchaincoin/sendconfirmdialog.h \
+  qt/idchaincoin/sendcustomfeedialog.h \
+  qt/idchaincoin/sendchangeaddressdialog.h \
+  qt/idchaincoin/sendmultirow.h \
+  qt/idchaincoin/send.h \
+  qt/idchaincoin/addnewaddressdialog.h \
+  qt/idchaincoin/addnewcontactdialog.h \
+  qt/idchaincoin/requestdialog.h \
+  qt/idchaincoin/receivewidget.h \
+  qt/idchaincoin/tooltipmenu.h \
+  qt/idchaincoin/addresseswidget.h \
+  qt/idchaincoin/defaultdialog.h \
+  qt/idchaincoin/settings/settingsbackupwallet.h \
+  qt/idchaincoin/settings/settingsexportcsv.h \
+  qt/idchaincoin/settings/settingsbittoolwidget.h \
+  qt/idchaincoin/settings/settingsconsolewidget.h \
+  qt/idchaincoin/settings/settingsdisplayoptionswidget.h \
+  qt/idchaincoin/settings/settingsfaqwidget.h \
+  qt/idchaincoin/settings/settingsinformationwidget.h \
+  qt/idchaincoin/settings/settingsmainoptionswidget.h \
+  qt/idchaincoin/settings/settingsmultisenddialog.h \
+  qt/idchaincoin/settings/settingsmultisendwidget.h \
+  qt/idchaincoin/settings/settingssignmessagewidgets.h \
+  qt/idchaincoin/settings/settingswalletoptionswidget.h \
+  qt/idchaincoin/settings/settingswalletrepairwidget.h \
+  qt/idchaincoin/settings/settingswidget.h \
+  qt/idchaincoin/welcomecontentwidget.h \
+  qt/idchaincoin/splash.h
+
+RES_ICONS = \
+  qt/res/icons/bitcoin.ico \
+  qt/res/icons/bitcoin.png \
+  qt/res/icons/bitcoin_testnet.ico \
+  qt/res/icons/bitcoin_testnet.png \
+  qt/res/icons/bitcoin_regtest.png \
+  qt/res/icons/lock_closed.png \
+  qt/res/icons/lock_open.png \
+  qt/res/icons/overview.png \
+  qt/res/icons/ic-transaction-received.svg \
+  qt/res/icons/ic-transaction-mint.svg \
+  qt/res/icons/ic-transaction-sent.svg \
+  qt/res/icons/ic-transaction-staked.svg \
+  qt/idchaincoin/res/img/bg-dashboard-banner.png \
+  qt/idchaincoin/res/img/bg-multi-number-dark.svg \
+  qt/idchaincoin/res/img/ic-check-locked.svg \
+  qt/idchaincoin/res/img/ic-check-console.svg \
+  qt/idchaincoin/res/img/ic-nav-address.svg \
+  qt/idchaincoin/res/img/ic-update.svg \
+  qt/idchaincoin/res/img/bg-multi-number.svg \
+  qt/idchaincoin/res/img/ic-check-mint-off.svg \
+  qt/idchaincoin/res/img/ic-nav-dashboard-active.png \
+  qt/idchaincoin/res/img/ic-wallet-status-locked.svg \
+  qt/idchaincoin/res/img/bg-splash.svg \
+  qt/idchaincoin/res/img/bg-splash.png \
+  qt/idchaincoin/res/img/ic-check-mint.svg \
+  qt/idchaincoin/res/img/ic-nav-dashboard-hover.png \
+  qt/idchaincoin/res/img/ic-wallet-status-staking.svg \
+  qt/idchaincoin/res/img/ic-check-peers-off.svg \
+  qt/idchaincoin/res/img/ic-nav-dashboard.png \
+  qt/idchaincoin/res/img/ic-wallet-status-unlocked.svg \
+  qt/idchaincoin/res/img/ic-check-peers.svg \
+  qt/idchaincoin/res/img/ic-nav-master-active.png \
+  qt/idchaincoin/res/img/ic-watch-password-white.svg \
+  qt/idchaincoin/res/img/bg-welcome-container.jpg \
+  qt/idchaincoin/res/img/bg-welcome-container.png \
+  qt/idchaincoin/res/img/bg-welcome-container.svg \
+  qt/idchaincoin/res/img/bg-welcome-container@2x.png \
+  qt/idchaincoin/res/img/bg-welcome-container@3x.png \
+  qt/idchaincoin/res/img/ic-check-staking-off.svg \
+  qt/idchaincoin/res/img/ic-nav-master-hover.png \
+  qt/idchaincoin/res/img/ic-watch-password.svg \
+  qt/idchaincoin/res/img/bg-welcome.jpg \
+  qt/idchaincoin/res/img/bg-welcome.svg \
+  qt/idchaincoin/res/img/bg-welcome@2x.jpg \
+  qt/idchaincoin/res/img/bg-welcome@3x.jpg \
+  qt/idchaincoin/res/img/bg-welcome.png \
+  qt/idchaincoin/res/img/ic-check-staking.svg \
+  qt/idchaincoin/res/img/ic-nav-master.png \
+  qt/idchaincoin/res/img/img-dashboard-banner.jpg \
+  qt/idchaincoin/res/img/btn-radio-active.svg \
+  qt/idchaincoin/res/img/ic-check-mn-conf.svg \
+  qt/idchaincoin/res/img/ic-check-coin-conf.svg \
+  qt/idchaincoin/res/img/ic-check-sync-off.svg \
+  qt/idchaincoin/res/img/ic-nav-privacy-active.svg \
+  qt/idchaincoin/res/img/img-empty-contacts.svg \
+  qt/idchaincoin/res/img/btn-radio-off.svg \
+  qt/idchaincoin/res/img/ic-check-sync.png \
+  qt/idchaincoin/res/img/ic-nav-privacy-hover.svg \
+  qt/idchaincoin/res/img/img-empty-dark-contacts.svg \
+  qt/idchaincoin/res/img/ic-contact-arrow-down.svg \
+  qt/idchaincoin/res/img/ic-contact-arrow-down-white.svg \
+  qt/idchaincoin/res/img/ic-check-sync.svg \
+  qt/idchaincoin/res/img/ic-check-faq.svg \
+  qt/idchaincoin/res/img/ic-nav-privacy.svg \
+  qt/idchaincoin/res/img/img-empty-dark-error.svg \
+  qt/idchaincoin/res/img/ic-add-label.svg \
+  qt/idchaincoin/res/img/ic-pending.svg \
+  qt/idchaincoin/res/img/ic-check-theme-dark.svg \
+  qt/idchaincoin/res/img/ic-nav-receive-active.svg \
+  qt/idchaincoin/res/img/img-empty-dark-masternode.svg \
+  qt/idchaincoin/res/img/ic-add-liliac.svg \
+  qt/idchaincoin/res/img/ic-check-theme-light.svg \
+  qt/idchaincoin/res/img/ic-nav-receive-hover.svg \
+  qt/idchaincoin/res/img/img-empty-dark-multisend.png \
+  qt/idchaincoin/res/img/ic-add-purple.svg \
+  qt/idchaincoin/res/img/ic-check-white.svg \
+  qt/idchaincoin/res/img/ic-nav-receive.svg \
+  qt/idchaincoin/res/img/img-empty-dark-peers.svg \
+  qt/idchaincoin/res/img/ic-add.svg \
+  qt/idchaincoin/res/img/ic-check.svg \
+  qt/idchaincoin/res/img/ic-nav-send-active.png \
+  qt/idchaincoin/res/img/img-empty-dark-staking-off.png \
+  qt/idchaincoin/res/img/img-empty-dark-staking-on.png \
+  qt/idchaincoin/res/img/ic-address-book-grey.svg \
+  qt/idchaincoin/res/img/ic-chevron-left.svg \
+  qt/idchaincoin/res/img/ic-nav-send-hover.png \
+  qt/idchaincoin/res/img/img-empty-dark-transactions.png \
+  qt/idchaincoin/res/img/ic-address-book-white.svg \
+  qt/idchaincoin/res/img/ic-chevron-right.svg \
+  qt/idchaincoin/res/img/ic-nav-send.png \
+  qt/idchaincoin/res/img/img-empty-error.svg \
+  qt/idchaincoin/res/img/ic-address-book.svg \
+  qt/idchaincoin/res/img/ic-clear-liliac.svg \
+  qt/idchaincoin/res/img/ic-nav-settings-active.svg \
+  qt/idchaincoin/res/img/img-empty-masternode.svg \
+  qt/idchaincoin/res/img/ic-address-send-white.svg \
+  qt/idchaincoin/res/img/ic-clear-purple.svg \
+  qt/idchaincoin/res/img/ic-nav-settings-hover.svg \
+  qt/idchaincoin/res/img/img-empty-multisend.png \
+  qt/idchaincoin/res/img/ic-address-send.svg \
+  qt/idchaincoin/res/img/ic-close-white.svg \
+  qt/idchaincoin/res/img/ic-nav-settings.svg \
+  qt/idchaincoin/res/img/img-empty-peers.svg \
+  qt/idchaincoin/res/img/img-empty-privacy.png \
+  qt/idchaincoin/res/img/img-empty-privacy-dark.png \
+  qt/idchaincoin/res/img/ic-arrow-drop-down-white.svg \
+  qt/idchaincoin/res/img/ic-close.svg \
+  qt/idchaincoin/res/img/ic-radio-liliac-on.svg \
+  qt/idchaincoin/res/img/img-empty-staking-off.png \
+  qt/idchaincoin/res/img/ic-arrow-drop-down.svg \
+  qt/idchaincoin/res/img/ic-coin-heirs.png \
+  qt/idchaincoin/res/img/ic-receive-off.svg \
+  qt/idchaincoin/res/img/img-empty-staking-on.png \
+  qt/idchaincoin/res/img/ic-arrow-drop-up-white.svg \
+  qt/idchaincoin/res/img/ic-receive-on.svg \
+  qt/idchaincoin/res/img/img-empty-transactions.png \
+  qt/idchaincoin/res/img/ic-arrow-drop-up.svg \
+  qt/idchaincoin/res/img/ic-received.svg \
+  qt/idchaincoin/res/img/img-logo-idchaincoin.png \
+  qt/idchaincoin/res/img/ic-arrow-drop-white-down.svg \
+  qt/idchaincoin/res/img/ic-combo-box.svg \
+  qt/idchaincoin/res/img/ic-send.svg \
+  qt/idchaincoin/res/img/img-logo-idchaincoin@2x.png \
+  qt/idchaincoin/res/img/ic-arrow-purple-down.svg \
+  qt/idchaincoin/res/img/ic-connect.svg \
+  qt/idchaincoin/res/img/ic-submenu-lock.svg \
+  qt/idchaincoin/res/img/img-logo-idchaincoin@3x.png \
+  qt/idchaincoin/res/img/img-logo-idchaincoin.svg \
+  qt/idchaincoin/res/img/ic-arrow-right-white.svg \
+  qt/idchaincoin/res/img/ic-arrow-left-white.svg \
+  qt/idchaincoin/res/img/ic-arrow-left.svg \
+  qt/idchaincoin/res/img/ic-copy-liliac.svg \
+  qt/idchaincoin/res/img/ic-submenu-staking.svg \
+  qt/idchaincoin/res/img/img-nav-logo-idchaincoin.png \
+  qt/idchaincoin/res/img/ic-arrow-right.svg \
+  qt/idchaincoin/res/img/ic-copy.svg \
+  qt/idchaincoin/res/img/ic-copy-big.svg \
+  qt/idchaincoin/res/img/ic-copy-big-white.svg \
+  qt/idchaincoin/res/img/ic-submenu-unlock.svg \
+  qt/idchaincoin/res/img/img-nav-logo.png \
+  qt/idchaincoin/res/img/ic-arrow-white-left.svg \
+  qt/idchaincoin/res/img/ic-exit.svg \
+  qt/idchaincoin/res/img/ic-switch-liliac-on.svg \
+  qt/idchaincoin/res/img/img-nav-logo.svg \
+  qt/idchaincoin/res/img/ic-arrow-white-right.svg \
+  qt/idchaincoin/res/img/ic-expand.svg \
+  qt/idchaincoin/res/img/ic-switch-off.svg \
+  qt/idchaincoin/res/img/img-qr-test-big.png \
+  qt/idchaincoin/res/img/ic-check-active.svg \
+  qt/idchaincoin/res/img/ic-folder.svg \
+  qt/idchaincoin/res/img/ic-switch-on.svg \
+  qt/idchaincoin/res/img/img-qr-test.png \
+  qt/idchaincoin/res/img/ic-check-box.svg \
+  qt/idchaincoin/res/img/ic-check-box-dark-active.svg \
+  qt/idchaincoin/res/img/ic-check-box-indeterminate.svg \
+  qt/idchaincoin/res/img/ic-check-box-liliac-indeterminate.svg \
+  qt/idchaincoin/res/img/ic-label-liliac.svg \
+  qt/idchaincoin/res/img/ic-transaction-warning.svg \
+  qt/idchaincoin/res/img/ic-transaction-mint.svg \
+  qt/idchaincoin/res/img/ic-transaction-mint-inactive.svg \
+  qt/idchaincoin/res/img/img-qr.svg \
+  qt/idchaincoin/res/img/ic-check-connect-off.svg \
+  qt/idchaincoin/res/img/ic-check-tor-off.svg \
+  qt/idchaincoin/res/img/ic-check-tor.svg \
+  qt/idchaincoin/res/img/ic-label.svg \
+  qt/idchaincoin/res/img/ic-transaction-received.svg \
+  qt/idchaincoin/res/img/dark/ic-transaction-received.svg \
+  qt/idchaincoin/res/img/dark/ic-transaction-warning.svg \
+  qt/idchaincoin/res/img/dark/ic-transaction-mint.svg \
+  qt/idchaincoin/res/img/dark/ic-transaction-mint-inactive.svg \
+  qt/idchaincoin/res/img/ic-transaction-received-inactive.svg \
+  qt/idchaincoin/res/img/dark/ic-transaction-received-inactive.svg \
+  qt/idchaincoin/res/img/img-welcome-step1.png \
+  qt/idchaincoin/res/img/ic-check-connect.svg \
+  qt/idchaincoin/res/img/ic-menu-hover.svg \
+  qt/idchaincoin/res/img/ic-transaction-sent.svg \
+  qt/idchaincoin/res/img/ic-transaction-sent-inactive.svg \
+  qt/idchaincoin/res/img/dark/ic-transaction-sent.svg \
+  qt/idchaincoin/res/img/dark/ic-transaction-sent-inactive.svg \
+  qt/idchaincoin/res/img/img-welcome-step2.png \
+  qt/idchaincoin/res/img/ic-check-dark.svg \
+  qt/idchaincoin/res/img/ic-mint.svg \
+  qt/idchaincoin/res/img/ic-transaction-staked.svg \
+  qt/idchaincoin/res/img/ic-transaction-staked-inactive.svg \
+  qt/idchaincoin/res/img/dark/ic-transaction-staked.svg \
+  qt/idchaincoin/res/img/dark/ic-transaction-staked-inactive.svg \
+  qt/idchaincoin/res/img/img-welcome-step3.png \
+  qt/idchaincoin/res/img/ic-check-liliac-on.svg \
+  qt/idchaincoin/res/img/ic-nav-address-active.svg \
+  qt/idchaincoin/res/img/ic-unlock-staking.svg \
+  qt/idchaincoin/res/img/img-welcome-step4.png \
+  qt/idchaincoin/res/img/ic-check-locked-off.svg \
+  qt/idchaincoin/res/img/ic-nav-address-hover.svg \
+  qt/idchaincoin/res/img/ic-update-liliac.svg \
+  qt/idchaincoin/res/img/ic-arrow-drop-down-purple.svg \
+  qt/idchaincoin/res/img/ic-arrow-drop-up-purple.png \
+  qt/idchaincoin/res/img/ic-check-liliac-indeterminate.svg \
+  qt/idchaincoin/res/img/ic-check-box-liliac-indeterminate.svg \
+  qt/idchaincoin/res/img/ic-check-box-indeterminate.svg \
+  qt/idchaincoin/res/img/ani-loading-dark.gif \
+  qt/idchaincoin/res/img/ani-loading.gif
+
+
+
+BITCOIN_QT_BASE_CPP = \
+  qt/bantablemodel.cpp \
+  qt/bitcoinaddressvalidator.cpp \
+  qt/idchaincoin/idchaincoingui.cpp \
+  qt/bitcoinunits.cpp \
+  qt/clientmodel.cpp \
+  qt/csvmodelwriter.cpp \
+  qt/guiutil.cpp \
+  qt/intro.cpp \
+  qt/networkstyle.cpp \
+  qt/notificator.cpp \
+  qt/optionsdialog.cpp \
+  qt/optionsmodel.cpp \
+  qt/peertablemodel.cpp \
+  qt/platformstyle.cpp \
+  qt/qvalidatedlineedit.cpp \
+  qt/qvaluecombobox.cpp \
+  qt/rpcconsole.cpp \
+  qt/trafficgraphwidget.cpp \
+  qt/utilitydialog.cpp
+
+BITCOIN_QT_WINDOWS_CPP = qt/winshutdownmonitor.cpp
+
+BITCOIN_QT_WALLET_CPP = \
+  qt/addressbookpage.cpp \
+  qt/addresstablemodel.cpp \
+  qt/askpassphrasedialog.cpp \
+  qt/coincontroldialog.cpp \
+  qt/coincontroltreewidget.cpp \
+  qt/editaddressdialog.cpp \
+  qt/openuridialog.cpp \
+  qt/paymentrequestplus.cpp \
+  qt/paymentserver.cpp \
+  qt/recentrequeststablemodel.cpp \
+  qt/transactionfilterproxy.cpp \
+  qt/transactionrecord.cpp \
+  qt/transactiontablemodel.cpp \
+  qt/walletmodel.cpp \
+  qt/walletmodeltransaction.cpp \
+  qt/idchaincoin/loadingdialog.cpp \
+  qt/idchaincoin/pwidget.cpp \
+  qt/idchaincoin/focuseddialog.cpp \
+  qt/idchaincoin/guitransactionsutils.cpp \
+  qt/idchaincoin/snackbar.cpp \
+  qt/idchaincoin/navmenuwidget.cpp \
+  qt/idchaincoin/lockunlock.cpp \
+  qt/idchaincoin/receivedialog.cpp \
+  qt/idchaincoin/furabstractlistitemdelegate.cpp \
+  qt/idchaincoin/txviewholder.cpp \
+  qt/idchaincoin/qtutils.cpp \
+  qt/idchaincoin/expandablebutton.cpp \
+  qt/idchaincoin/topbar.cpp \
+  qt/idchaincoin/txrow.cpp \
+  qt/idchaincoin/addressholder.cpp \
+  qt/idchaincoin/addressfilterproxymodel.cpp \
+  qt/idchaincoin/dashboardwidget.cpp \
+  qt/idchaincoin/addresslabelrow.cpp \
+  qt/idchaincoin/contactdropdownrow.cpp \
+  qt/idchaincoin/contactsdropdown.cpp \
+  qt/idchaincoin/optionbutton.cpp \
+  qt/idchaincoin/mninfodialog.cpp \
+  qt/idchaincoin/mnmodel.cpp \
+  qt/idchaincoin/masternodewizarddialog.cpp \
+  qt/idchaincoin/mnrow.cpp \
+  qt/idchaincoin/masternodeswidget.cpp \
+  qt/idchaincoin/myaddressrow.cpp \
+  qt/idchaincoin/sendchangeaddressdialog.cpp \
+  qt/idchaincoin/sendconfirmdialog.cpp \
+  qt/idchaincoin/sendcustomfeedialog.cpp \
+  qt/idchaincoin/sendchangeaddressdialog.cpp \
+  qt/idchaincoin/sendmultirow.cpp \
+  qt/idchaincoin/send.cpp \
+  qt/idchaincoin/addnewaddressdialog.cpp \
+  qt/idchaincoin/addnewcontactdialog.cpp \
+  qt/idchaincoin/requestdialog.cpp \
+  qt/idchaincoin/receivewidget.cpp \
+  qt/idchaincoin/tooltipmenu.cpp \
+  qt/idchaincoin/addresseswidget.cpp \
+  qt/idchaincoin/defaultdialog.cpp \
+  qt/idchaincoin/settings/settingsbackupwallet.cpp \
+  qt/idchaincoin/settings/settingsexportcsv.cpp \
+  qt/idchaincoin/settings/settingsbittoolwidget.cpp \
+  qt/idchaincoin/settings/settingsconsolewidget.cpp \
+  qt/idchaincoin/settings/settingsdisplayoptionswidget.cpp \
+  qt/idchaincoin/settings/settingsfaqwidget.cpp \
+  qt/idchaincoin/settings/settingsinformationwidget.cpp \
+  qt/idchaincoin/settings/settingsmainoptionswidget.cpp \
+  qt/idchaincoin/settings/settingsmultisenddialog.cpp \
+  qt/idchaincoin/settings/settingsmultisendwidget.cpp \
+  qt/idchaincoin/settings/settingssignmessagewidgets.cpp \
+  qt/idchaincoin/settings/settingswalletoptionswidget.cpp \
+  qt/idchaincoin/settings/settingswalletrepairwidget.cpp \
+  qt/idchaincoin/settings/settingswidget.cpp \
+  qt/idchaincoin/welcomecontentwidget.cpp \
+  qt/idchaincoin/splash.cpp
+
+
+BITCOIN_QT_CPP = $(BITCOIN_QT_BASE_CPP)
+if TARGET_WINDOWS
+BITCOIN_QT_CPP += $(BITCOIN_QT_WINDOWS_CPP)
+endif
+if ENABLE_WALLET
+BITCOIN_QT_CPP += $(BITCOIN_QT_WALLET_CPP)
+endif
+
+RES_IMAGES = \
+  qt/res/images/about.png \
+  qt/res/images/splash.png \
+  qt/res/images/splash_testnet.png \
+  qt/res/images/splash_regtest.png
+
+RES_CSS = \
+  qt/res/css/default.css \
+  qt/idchaincoin/res/css/style_dark.css \
+  qt/idchaincoin/res/css/style_light.css
+
+BITCOIN_RC = qt/res/idchaincoin-qt-res.rc
+
+BITCOIN_QT_INCLUDES = -I$(builddir)/qt -I$(srcdir)/qt -I$(srcdir)/qt/forms \
+  -I$(builddir)/qt/forms -DQT_NO_KEYWORDS
+
+qt_libbitcoinqt_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES) $(BITCOIN_QT_INCLUDES) \
+  $(QT_INCLUDES) $(QT_DBUS_INCLUDES) $(PROTOBUF_CFLAGS) $(QR_CFLAGS) $(SVG_CFLAGS) $(CHARTS_CFLAGS)
+qt_libbitcoinqt_a_CXXFLAGS = $(AM_CXXFLAGS) $(QT_PIE_FLAGS)
+qt_libbitcoinqt_a_OBJCXXFLAGS = $(AM_OBJCXXFLAGS) $(QT_PIE_FLAGS)
+
+qt_libbitcoinqt_a_SOURCES = $(BITCOIN_QT_CPP) $(BITCOIN_QT_H) $(QT_FORMS_UI) \
+  $(QT_QRC) $(QT_QRC_LOCALE) $(QT_TS) $(PROTOBUF_PROTO) $(RES_ICONS) $(RES_IMAGES) $(RES_CSS)
+
+nodist_qt_libbitcoinqt_a_SOURCES = $(QT_MOC_CPP) $(QT_MOC) $(PROTOBUF_CC) \
+  $(PROTOBUF_H) $(QT_QRC_CPP) $(QT_QRC_LOCALE_CPP)
+
+# forms/foo.h -> forms/ui_foo.h
+QT_FORMS_H=$(join $(dir $(QT_FORMS_UI)),$(addprefix ui_, $(notdir $(QT_FORMS_UI:.ui=.h))))
+
+# Most files will depend on the forms and moc files as includes. Generate them
+# before anything else.
+$(QT_MOC): $(QT_FORMS_H)
+$(qt_libbitcoinqt_a_OBJECTS) $(qt_idchaincoin_qt_OBJECTS) : | $(QT_MOC)
+
+#Generating these with a half-written protobuf header leads to wacky results.
+#This makes sure it's done.
+$(QT_MOC): $(PROTOBUF_H)
+$(QT_MOC_CPP): $(PROTOBUF_H)
+
+# idchaincoin-qt binary #
+qt_idchaincoin_qt_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES) $(BITCOIN_QT_INCLUDES) \
+  $(QT_INCLUDES) $(PROTOBUF_CFLAGS) $(QR_CFLAGS) $(SVG_CFLAGS) $(CHARTS_CFLAGS)
+qt_idchaincoin_qt_CXXFLAGS = $(AM_CXXFLAGS) $(QT_PIE_FLAGS)
+
+qt_idchaincoin_qt_SOURCES = qt/idchaincoin.cpp
+if TARGET_DARWIN
+  qt_idchaincoin_qt_SOURCES += $(BITCOIN_MM)
+endif
+if TARGET_WINDOWS
+  qt_idchaincoin_qt_SOURCES += $(BITCOIN_RC)
+endif
+qt_idchaincoin_qt_LDADD = qt/libbitcoinqt.a $(LIBBITCOIN_SERVER)
+if ENABLE_WALLET
+qt_idchaincoin_qt_LDADD += $(LIBBITCOIN_UTIL) $(LIBBITCOIN_WALLET)
+endif
+if ENABLE_ZMQ
+qt_idchaincoin_qt_LDADD += $(LIBBITCOIN_ZMQ) $(ZMQ_LIBS)
+endif
+qt_idchaincoin_qt_LDADD += $(LIBBITCOIN_CLI) $(LIBBITCOIN_COMMON) $(LIBBITCOIN_UTIL) $(LIBBITCOIN_CRYPTO) $(LIBUNIVALUE) $(LIBZCASH_LIBS) $(LIBLEVELDB) $(LIBLEVELDB_SSE42) $(LIBMEMENV) \
+  $(BOOST_LIBS) $(QT_LIBS) $(QT_DBUS_LIBS) $(QR_LIBS) $(PROTOBUF_LIBS) $(SVG_LIBS) $(CHARTS_LIBS) $(BDB_LIBS) $(SSL_LIBS) $(CRYPTO_LIBS) $(MINIUPNPC_LIBS) $(LIBSECP256K1) \
+  $(EVENT_PTHREADS_LIBS) $(EVENT_LIBS)
+qt_idchaincoin_qt_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(QT_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
+qt_idchaincoin_qt_LIBTOOLFLAGS = $(AM_LIBTOOLFLAGS) --tag CXX
+
+#locale/foo.ts -> locale/foo.qm
+QT_QM=$(QT_TS:.ts=.qm)
+
+SECONDARY: $(QT_QM)
+
+$(srcdir)/qt/idchaincoinstrings.cpp: $(libbitcoin_server_a_SOURCES) $(libbitcoin_wallet_a_SOURCES) $(libbitcoin_common_a_SOURCES) $(libbitcoin_zmq_a_SOURCES) $(libbitcoin_util_a_SOURCES)
+	@test -n $(XGETTEXT) || echo "xgettext is required for updating translations"
+	$(AM_V_GEN) cd $(srcdir); XGETTEXT=$(XGETTEXT) PACKAGE_NAME="$(PACKAGE_NAME)" $(PYTHON) ../share/qt/extract_strings_qt.py $^
+
+translate: $(srcdir)/qt/idchaincoinstrings.cpp $(QT_FORMS_UI) $(QT_FORMS_UI) $(BITCOIN_QT_BASE_CPP) qt/idchaincoin.cpp $(BITCOIN_QT_WINDOWS_CPP) $(BITCOIN_QT_WALLET_CPP) $(BITCOIN_QT_H) $(BITCOIN_MM)
+	@test -n $(LUPDATE) || echo "lupdate is required for updating translations"
+	$(AM_V_GEN) QT_SELECT=$(QT_SELECT) $(LUPDATE) $^ -locations relative -no-obsolete -ts $(srcdir)/qt/locale/idchaincoin_en.ts
+
+$(QT_QRC_LOCALE_CPP): $(QT_QRC_LOCALE) $(QT_QM)
+	@test -f $(RCC)
+	@cp -f $< $(@D)/temp_$(<F)
+	$(AM_V_GEN) QT_SELECT=$(QT_SELECT) $(RCC) -name idchaincoin_locale $(@D)/temp_$(<F) | \
+	  $(SED) -e '/^\*\*.*Created:/d' -e '/^\*\*.*by:/d' > $@
+	@rm $(@D)/temp_$(<F)
+
+$(QT_QRC_CPP): $(QT_QRC) $(QT_FORMS_H) $(RES_ICONS) $(RES_IMAGES) $(RES_CSS) $(PROTOBUF_H)
+	@test -f $(RCC)
+	$(AM_V_GEN) QT_SELECT=$(QT_SELECT) $(RCC) -name idchaincoin $< | \
+	  $(SED) -e '/^\*\*.*Created:/d' -e '/^\*\*.*by:/d' > $@
+
+CLEAN_QT = $(nodist_qt_libbitcoinqt_a_SOURCES) $(QT_QM) $(QT_FORMS_H) qt/*.gcda qt/*.gcno qt/temp_idchaincoin_locale.qrc
+
+CLEANFILES += $(CLEAN_QT)
+
+idchaincoin_qt_clean: FORCE
+	rm -f $(CLEAN_QT) $(qt_libbitcoinqt_a_OBJECTS) $(qt_idchaincoin_qt_OBJECTS) qt/idchaincoin-qt$(EXEEXT) $(LIBBITCOINQT)
+
+idchaincoin_qt : qt/idchaincoin-qt$(EXEEXT)
+
+ui_%.h: %.ui
+	@test -f $(UIC)
+	@$(MKDIR_P) $(@D)
+	$(AM_V_GEN) QT_SELECT=$(QT_SELECT) $(UIC) -o $@ $< || (echo "Error creating $@"; false)
+
+%.moc: %.cpp
+	$(AM_V_GEN) QT_SELECT=$(QT_SELECT) $(MOC) $(DEFAULT_INCLUDES) $(QT_INCLUDES) $(MOC_DEFS) $< | \
+	  $(SED) -e '/^\*\*.*Created:/d' -e '/^\*\*.*by:/d' > $@
+
+moc_%.cpp: %.h
+	$(AM_V_GEN) QT_SELECT=$(QT_SELECT) $(MOC) $(DEFAULT_INCLUDES) $(QT_INCLUDES) $(MOC_DEFS) $< | \
+	  $(SED) -e '/^\*\*.*Created:/d' -e '/^\*\*.*by:/d' > $@
+
+%.qm: %.ts
+	@test -f $(LRELEASE)
+	@$(MKDIR_P) $(@D)
+	$(AM_V_GEN) QT_SELECT=$(QT_SELECT) $(LRELEASE) -silent $< -qm $@

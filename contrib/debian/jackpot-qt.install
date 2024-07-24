@@ -1,0 +1,6 @@
+usr/local/bin/idchaincoin-qt usr/bin
+share/pixmaps/idchaincoin32.xpm usr/share/pixmaps
+share/pixmaps/idchaincoin16.xpm usr/share/pixmaps
+share/pixmaps/idchaincoin128.png usr/share/pixmaps
+debian/idchaincoin-qt.desktop usr/share/applications
+debian/idchaincoin-qt.protocol usr/share/kde4/services/
