@@ -3,8 +3,8 @@ Immutable Inheritance/Will Transfer using Blockchain technology.
 
 
 <h1>DCT COIN repository</h1>
-<p> IDChainCoin platform implements the placement of your crypto assets as a Last Will and Testament on the blockchain.<p>
-<p> IDChainCoin utilizes a Proof of Stake (PoS) consensus system algorithm, allowing all owners of DCT to participate in earning block rewards while securing the network and operating Masternodes thereby generating passive income.<p>
+<p> Experience a new era of secure, transparent, and efficient ticketing with IDCHAIN Coin (DCT) and its defi token - TicketID token (TCT).IDCHAIN blockchain network ensures that every ticket is authentic and tamper-proof.</p>
+<p> IDChainCoin utilizes a Proof of Stake (PoS) consensus system algorithm, allowing all owners of DCT to participate in earning block rewards while securing the network and operating Masternodes thereby generating passive income.</p>
 
   
   
