@@ -1,5 +1,5 @@
 # DCT
-Immutable Inheritance/Will Transfer using Blockchain technology.
+Our decentralized platform ensures that you manage your tickets without relying on intermediaries.
 
 
 <h1>DCT COIN repository</h1>
