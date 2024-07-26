@@ -3477,8 +3477,8 @@ There was an error trying to save the address list to %1. Please try again.</sou
         <translation>2) Почему мои DCT невозможно потратить?</translation>
     </message>
     <message>
-        <source>https://idchaincoincoin.io/</source>
-        <translation>https://idchaincoincoin.io/</translation>
+        <source>https://idchaincoin.com/</source>
+        <translation>https://idchaincoin.com/</translation>
     </message>
     <message>
         <source>1</source>

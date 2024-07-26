@@ -4355,7 +4355,7 @@ There was an error trying to save the address list to %1. Please try again.</sou
     </message>
     <message>
         <location line="+148"/>
-        <source>https://idchaincoincoin.io/</source>
+        <source>https://idchaincoin.com/</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

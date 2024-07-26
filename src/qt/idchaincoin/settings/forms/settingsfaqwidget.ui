@@ -342,7 +342,7 @@
                   <enum>Qt::NoFocus</enum>
                  </property>
                  <property name="text">
-                  <string>https://idchaincoincoin.com</string>
+                  <string>https://idchaincoin.com</string>
                  </property>
                 </widget>
                </item>

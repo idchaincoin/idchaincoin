@@ -28,7 +28,7 @@ Build-Depends: debhelper,
  libzmq3-dev,
  dh-systemd
 Standards-Version: 3.9.2
-Homepage: https://idchaincoincoin.io/
+Homepage: https://idchaincoin.com/
 Vcs-Git: git://github.com/idchaincoin/DCT.git
 Vcs-Browser: https://github.com/idchaincoin/DCT
 

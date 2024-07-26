@@ -3483,8 +3483,8 @@ Er was een fout opgetreden tijdens het opslaan van deze adreslijst naar %1. Prob
         <translation>2) Waarom is mijn DCT niet besteedbaar?</translation>
     </message>
     <message>
-        <source>https://idchaincoincoin.io/</source>
-        <translation>https://idchaincoincoin.io/</translation>
+        <source>https://idchaincoin.com/</source>
+        <translation>https://idchaincoin.com/</translation>
     </message>
     <message>
         <source>1</source>

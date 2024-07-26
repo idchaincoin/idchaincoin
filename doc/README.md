@@ -3,7 +3,7 @@ DCT Core
 
 Setup
 ---------------------
-[DCT Core]https://idchaincoincoin.io/) is the original DCT client and it builds the backbone of the network. However, it downloads and stores the entire history of DCT transactions; depending on the speed of your computer and network connection, the synchronization process can take anywhere from a few hours to a day or more. Thankfully you only have to do this once.
+[DCT Core]https://idchaincoin.com/) is the original DCT client and it builds the backbone of the network. However, it downloads and stores the entire history of DCT transactions; depending on the speed of your computer and network connection, the synchronization process can take anywhere from a few hours to a day or more. Thankfully you only have to do this once.
 
 Running
 ---------------------
@@ -55,7 +55,7 @@ The DCT repo's [root README](/README.md) contains relevant information on the de
 - [Dnsseed Policy](dnsseed-policy.md)
 
 ### Resources
-* Discuss on the [DCT Homepage]https://idchaincoincoin.io/).
+* Discuss on the [DCT Homepage]https://idchaincoin.com/).
 * Join the [DCT Discord](https://discord.com/invite/Z3ghAYdgD2).
 
 ### Miscellaneous

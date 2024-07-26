@@ -3479,8 +3479,8 @@ Es gab ein Problem bei dem Versuch die Adressen unter %1 zu speichern. Bitte ver
         <translation>2) Wieso kann ich meine DCT nicht ausgeben?</translation>
     </message>
     <message>
-        <source>https://idchaincoincoin.io/</source>
-        <translation>https://idchaincoincoin.io/</translation>
+        <source>https://idchaincoin.com/</source>
+        <translation>https://idchaincoin.com/</translation>
     </message>
     <message>
         <source>1</source>

@@ -3483,8 +3483,8 @@ Si è verificato un errore nel tentativo di salvare l'elenco degli indirizzi in 
         <translation>2) Perché i miei DCT non sono spendibili?</translation>
     </message>
     <message>
-        <source>https://idchaincoincoin.io/</source>
-        <translation>https://idchaincoincoin.io/</translation>
+        <source>https://idchaincoin.com/</source>
+        <translation>https://idchaincoin.com/</translation>
     </message>
     <message>
         <source>1</source>

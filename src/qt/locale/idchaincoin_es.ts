@@ -3480,8 +3480,8 @@ Ha habido un error al tratar de guardar la libreta de direcciones en %1. Por fav
         <translation>2) ¿Por qué mis DCT no se pueden gastar?</translation>
     </message>
     <message>
-        <source>https://idchaincoincoin.io/</source>
-        <translation>https://idchaincoincoin.io/</translation>
+        <source>https://idchaincoin.com/</source>
+        <translation>https://idchaincoin.com/</translation>
     </message>
     <message>
         <source>1</source>
