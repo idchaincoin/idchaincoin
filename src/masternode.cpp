@@ -385,7 +385,7 @@ CAmount CMasternode::GetDevPayment(int nHeight)
     if (nHeight > 340200) return 1300 * COIN;  
     if (nHeight > 310200) return 1200 * COIN;  
     if (nHeight > 310000) return 3600 * COIN;  
-    if (nHeight > 280200) return 1036 * COIN;  
+    if (nHeight > 280200) return 1040 * COIN;  
     if (nHeight > 250200) return 900 * COIN;   
     if (nHeight > 220200) return 805 * COIN;   
     if (nHeight > 190200) return 640 * COIN;   
