@@ -140,7 +140,7 @@ public:
         consensus.nTime_RejectOldSporkKey = 1675142485;  //Tuesday, January 31, 2023 10:51:25 AM GMT
 
         // dev address
-        consensus.devAddress = "HHgbbzcGW61wrfQhFFkVhQc8RzCUE6rKY3";
+        consensus.devAddress = "DUARKejqgQY56Ro9rr48iggZ4GgqgA4hKN";
 
         // burn addresses
         consensus.mBurnAddresses = {
@@ -247,7 +247,7 @@ public:
         consensus.nTime_RejectOldSporkKey = 0;
 
         // dev address
-        consensus.devAddress = "SZQ7FehpbJBL5zcx6VGmtYxNPRJzHvWExx";
+        consensus.devAddress = "DUARKejqgQY56Ro9rr48iggZ4GgqgA4hKN";
 
         // Network upgrades
         consensus.vUpgrades[Consensus::BASE_NETWORK].nActivationHeight                      = Consensus::NetworkUpgrade::ALWAYS_ACTIVE;
@@ -357,7 +357,7 @@ public:
         consensus.nTime_RejectOldSporkKey = 0;
 
         // dev address
-        consensus.devAddress = "SZQ7FehpbJBL5zcx6VGmtYxNPRJzHvWExx";
+        consensus.devAddress = "DUARKejqgQY56Ro9rr48iggZ4GgqgA4hKN";
 
         // Network upgrades
         consensus.vUpgrades[Consensus::BASE_NETWORK].nActivationHeight =
