@@ -41,7 +41,7 @@ Our decentralized platform ensures that you manage your tickets without relying 
 </tr>
 <tr>
 <td>Port</td>
-<td>94631</td>
+<td>29095</td>
 </tr>
 <tr>
 <td>RPC Port</td>
